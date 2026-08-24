@@ -1,6 +1,7 @@
 from datetime import datetime, timezone
 
 from app.extensions import db
+from flask_bcrypt import generate_password_hash, check_password_hash
 
 
 class User(db.Model):
@@ -43,3 +44,12 @@ class User(db.Model):
         onupdate=lambda: datetime.now(timezone.utc),
         nullable=False
     )
+
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password).decode("utf-8")
+
+    def check_password(self, password):
+        return check_password_hash(
+            self.password_hash,
+            password
+        )
