@@ -44,6 +44,11 @@ class User(db.Model):
         onupdate=lambda: datetime.now(timezone.utc),
         nullable=False
     )
+    roles = db.relationship(
+        "Role",
+        secondary="user_roles",
+        back_populates="users"
+    )
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password).decode("utf-8")

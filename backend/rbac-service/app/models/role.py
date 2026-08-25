@@ -1,11 +1,13 @@
 from app.extensions import db
-from app.models import role_permissions
 
 
 class Role(db.Model):
     __tablename__ = "roles"
 
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(
+        db.Integer,
+        primary_key=True
+    )
 
     name = db.Column(
         db.String(50),
@@ -16,4 +18,16 @@ class Role(db.Model):
     description = db.Column(
         db.String(255),
         nullable=True
+    )
+
+    users = db.relationship(
+        "User",
+        secondary="user_roles",
+        back_populates="roles"
+    )
+
+    permissions = db.relationship(
+        "Permission",
+        secondary="role_permissions",
+        back_populates="roles"
     )
