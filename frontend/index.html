@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RBAC Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header class="header">
+            <h1>RBAC Dashboard</h1>
+
+            <button id="logoutBtn" class="danger hidden">
+                Logout
+            </button>
+        </header>
+
+        <!-- Login -->
+        <section id="loginSection" class="card">
+
+            <h2>Login</h2>
+
+            <form id="loginForm">
+
+                <label for="email">Email</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="hari@example.com"
+                    required
+                >
+
+                <label for="password">Password</label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Password"
+                    required
+                >
+
+                <button type="submit">
+                    Login
+                </button>
+
+            </form>
+
+            <p id="loginMessage"></p>
+
+        </section>
+
+
+        <!-- Dashboard -->
+        <section id="dashboardSection" class="hidden">
+
+            <div class="grid">
+
+                <div class="card">
+                    <h2>Current User</h2>
+
+                    <p>
+                        <strong>Username:</strong>
+                        <span id="username">-</span>
+                    </p>
+
+                    <p>
+                        <strong>Email:</strong>
+                        <span id="userEmail">-</span>
+                    </p>
+                </div>
+
+
+                <div class="card">
+                    <h2>Role</h2>
+
+                    <p id="role">-</p>
+                </div>
+
+
+                <div class="card">
+                    <h2>Permissions</h2>
+
+                    <ul id="permissions">
+                    </ul>
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="section-header">
+
+                    <h2>Users</h2>
+
+                    <button id="loadUsersBtn">
+                        Refresh Users
+                    </button>
+
+                </div>
+
+                <p id="usersMessage"></p>
+
+                <div id="usersList"></div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+</html>

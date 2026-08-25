@@ -25,3 +25,4 @@ class Permission(db.Model):
         secondary="role_permissions",
         back_populates="permissions"
     )
+    

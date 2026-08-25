@@ -1,6 +1,7 @@
 from app.extensions import db
 
 
+
 user_roles = db.Table(
     "user_roles",
 
